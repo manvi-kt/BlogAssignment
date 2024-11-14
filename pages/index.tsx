@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { RootState } from '../store';
-import { loginUser, logoutUser, addBlog, deleteBlog, updateBlog } from '../slices/blogSlice';
+import { addBlog, deleteBlog, updateBlog } from '../slices/blogSlice';
+import { loginUser,logoutUser } from '@/slices/authSlice';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 
@@ -10,7 +11,7 @@ const CreateBlogPost: React.FC = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const loggedIn = useSelector((state: RootState) => state.blog.loggedIn);
+  const loggedIn = useSelector((state: RootState) => state.logged.loggedIn);
   const weeklyData = useSelector((state: RootState) => state.blog.weeklyData);
   const blogData = useSelector((state: RootState) => state.blog.blogData);
 
@@ -171,7 +172,9 @@ const CreateBlogPost: React.FC = () => {
                       <li className="border-b border-gray-200 py-4 w-full">
                         <h4
                           className="text-lg font-semibold"
-                          onClick={() => handleNavigateToBlog(blog.id.toString())}
+                          onClick={() => { 
+                            console.log(blog.id.toString(), blog.id, "175")
+                            handleNavigateToBlog(blog.id.toString())}}
                         >
                           {blog.title}
                         </h4>
