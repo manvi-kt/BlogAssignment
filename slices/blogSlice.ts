@@ -16,14 +16,12 @@ interface WeeklyData{
 
 interface BlogState{
     blogData:Blog[],
-    loggedIn : boolean,
     weeklyData:WeeklyData
 }
 
 
 const initialState : BlogState = {
   blogData:[],
-  loggedIn: false,
   weeklyData: {
     Monday: 0,
     Tuesday: 0,
@@ -99,14 +97,8 @@ const BlogSlice = createSlice({
             }
           },
           
-         loginUser:(state)=>{
-            state.loggedIn = true;
-         },
-         logoutUser:(state)=>{
-            state.loggedIn = false;
-         },
         },
     });
 
-    export const {addBlog,updateBlog,deleteBlog,loginUser,logoutUser} = BlogSlice.actions;
+    export const {addBlog,updateBlog,deleteBlog} = BlogSlice.actions;
     export const blogReducer = BlogSlice.reducer;
