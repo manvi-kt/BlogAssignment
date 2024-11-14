@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import OptionList from './OptionList';
 import SubList from './Sublist';
 import { AboutDatas } from '@/data/data';
-import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 
 const AboutLayout: React.FC = () => {
