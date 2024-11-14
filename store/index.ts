@@ -1,9 +1,11 @@
 import { blogReducer } from "@/slices/blogSlice";
 import { configureStore } from "@reduxjs/toolkit";
+import { LoggedReducer } from "@/slices/authSlice";
 
 const store = configureStore({
     reducer: {
-     blog:blogReducer
+     blog:blogReducer,
+     logged: LoggedReducer
     } 
 })
 
