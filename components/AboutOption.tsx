@@ -28,7 +28,22 @@ const AboutLayout: React.FC = () => {
     <div className=" w-full flex flex-col">
       <div className="flex ">
         <div className="w-1/5 fixed top-0 left-0 h-full">
-          <Sidebar />
+        <aside className="w-64 bg-white mt-10 text-blue-800 p-6 space-y-4 min-h-screen rounded-lg shadow-lg">
+      <nav className="space-y-2">
+        <a
+          href="/"
+          className=" mt-5 block py-2 px-4 rounded hover:bg-blue-100"
+        >
+          Home
+        </a>
+        <a
+          href="/about/"
+          className="block py-2 px-4 rounded hover:bg-blue-100"
+        >
+          About
+        </a>
+      </nav>
+    </aside>
         </div>
         <main className="ml-[20%] flex-1 max-w-4xl mx-auto mt-6 p-6">
           <div className="flex space-x-8">
