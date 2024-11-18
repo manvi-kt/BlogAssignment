@@ -21,15 +21,44 @@ interface BlogState{
 
 
 const initialState : BlogState = {
-  blogData:[],
+  blogData:[
+    {
+      id:"1",
+      title: "Understanding JavaScript Closures",
+      content: "A deep dive into closures in JavaScript, explaining their uses and how they work with practical examples.",
+      date :"",
+      day:"Monday"
+    },
+    {
+      id:"2",
+      title: "10 Tips for Writing Clean React Code",
+      content: "Discover best practices for writing maintainable and clean React code to improve readability and scalability.",
+      date:"",
+      day:"Tuesday"
+    },
+    { 
+      id:"3",
+      title: "Exploring Next.js: A Beginner's Guide",
+      content: "An introduction to Next.js, covering its core features and how it simplifies server-side rendering and routing.",
+      date:"",
+      day:"Wednesday"
+    },
+    {
+      id:"4",
+      title: "CSS Tricks for Responsive Design",
+      content: "Learn essential CSS techniques to create responsive and user-friendly web designs that adapt to various devices.",
+      date:"",
+      day:"Sunday"
+    }
+  ],
   weeklyData: {
-    Monday: 0,
-    Tuesday: 0,
-    Wednesday: 0,
-    Thursday: 0,
+    Monday: 1,
+    Tuesday: 1,
+    Wednesday: 1,
+    Thursday: 1,
     Friday: 0,
     Saturday: 0,
-    Sunday: 0,
+    Sunday: 1,
   },
 
 
