@@ -53,8 +53,8 @@ const CreateBlogPost: React.FC = () => {
 
   const handleEditBlog = (id: string, currentTitle: string, currentContent: string) => {
     setEditingBlogId(id);
-    setEditedTitle(currentTitle); // Pre-fill title for editing
-    setEditedContent(currentContent); // Pre-fill content for editing
+    setEditedTitle(currentTitle); 
+    setEditedContent(currentContent); 
   };
 
   const handleUpdateContent = (id: string) => {
