@@ -19,8 +19,8 @@ const CreateBlogPost: React.FC = () => {
   const [content, setContent] = useState('');
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [editingBlogId, setEditingBlogId] = useState<string | null>(null);
-  const [editedTitle, setEditedTitle] = useState<string>(''); // State for editing title
-  const [editedContent, setEditedContent] = useState<string>(''); // State for editing content
+  const [editedTitle, setEditedTitle] = useState<string>('');
+  const [editedContent, setEditedContent] = useState<string>(''); 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleLoginToggle = () => {
@@ -48,13 +48,21 @@ const CreateBlogPost: React.FC = () => {
   };
 
   const handleDeleteBlog = (id: string) => {
+    if (!loggedIn) {
+      setErrorMessage('Please log in to delete a blog post.');
+      return;
+    }
     dispatch(deleteBlog({ id }));
   };
 
   const handleEditBlog = (id: string, currentTitle: string, currentContent: string) => {
+    if (!loggedIn) {
+      setErrorMessage('Please log in to edit a blog post.');
+      return;
+    }
     setEditingBlogId(id);
-    setEditedTitle(currentTitle); 
-    setEditedContent(currentContent); 
+    setEditedTitle(currentTitle); // Pre-fill title for editing
+    setEditedContent(currentContent); // Pre-fill content for editing
   };
 
   const handleUpdateContent = (id: string) => {
@@ -204,24 +212,28 @@ const CreateBlogPost: React.FC = () => {
                       )}
                     </li>
                     <div className="flex items-center ml-4 space-x-2">
-                      <button
-                        onClick={() => handleDeleteBlog(blog.id)}
-                        className="rounded-md border border-transparent p-2.5 text-center text-sm transition-all text-red-600 hover:bg-red-200"
-                      >
-                        Delete
-                      </button>
-                      <button
-                        onClick={() => handleEditBlog(blog.id, blog.title, blog.content)}
-                        className="rounded-md border border-transparent p-2.5 text-center text-sm transition-all text-blue-600 hover:bg-blue-200"
-                      >
-                        Edit
-                      </button>
+                      {loggedIn && (
+                        <>
+                          <button
+                            onClick={() => handleDeleteBlog(blog.id)}
+                            className="rounded-md border border-transparent p-2 text-sm font-medium text-red-600 hover:bg-red-50"
+                          >
+                            Delete
+                          </button>
+                          <button
+                            onClick={() => handleEditBlog(blog.id, blog.title, blog.content)}
+                            className="rounded-md border border-transparent p-2 text-sm font-medium text-blue-600 hover:bg-blue-50"
+                          >
+                            Edit
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}
               </ul>
             ) : (
-              <p>No blogs found for the selected days.</p>
+              <p className="text-gray-500">No blogs available.</p>
             )}
           </div>
         </main>
