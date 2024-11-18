@@ -48,21 +48,14 @@ const CreateBlogPost: React.FC = () => {
   };
 
   const handleDeleteBlog = (id: string) => {
-    if (!loggedIn) {
-      setErrorMessage('Please log in to delete a blog post.');
-      return;
-    }
+    
     dispatch(deleteBlog({ id }));
   };
 
   const handleEditBlog = (id: string, currentTitle: string, currentContent: string) => {
-    if (!loggedIn) {
-      setErrorMessage('Please log in to edit a blog post.');
-      return;
-    }
     setEditingBlogId(id);
-    setEditedTitle(currentTitle); // Pre-fill title for editing
-    setEditedContent(currentContent); // Pre-fill content for editing
+    setEditedTitle(currentTitle); 
+    setEditedContent(currentContent);
   };
 
   const handleUpdateContent = (id: string) => {
